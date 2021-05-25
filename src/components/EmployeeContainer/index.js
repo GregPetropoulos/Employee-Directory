@@ -1,15 +1,14 @@
 import React, { Component } from "react";
-import Container from "./Container";
-import Row from "./Row";
-import Col from "./Col";
-import Card from "./Card";
-import SearchForm from "..SearchForm";
+
+import EmployeeTable from "../EmployeeTable";
+import SearchForm from "../SearchForm";
 import API from "../../utils/API";
 
 class EmployeeContainer extends Component {
   state = {
-    result: {},
-    search: ""
+  search: ""
+  employees:[],
+  filteredEmployees: []
   };
 
   // When this component mounts, search for the movie "The Matrix"
@@ -38,37 +37,37 @@ class EmployeeContainer extends Component {
   };
 
   render() {
-    return (
-      <Container>
-        <Row>
-          <Col size="md-8">
-            <Card
-              heading={this.state.result.Title || "Search for a Movie to Begin"}
-            >
-              {this.state.result.Title ? (
-                <MovieDetail
-                  title={this.state.result.Title}
-                  src={this.state.result.Poster}
-                  director={this.state.result.Director}
-                  genre={this.state.result.Genre}
-                  released={this.state.result.Released}
-                />
-              ) : (
-                <h3>No Results to Display</h3>
-              )}
-            </Card>
-          </Col>
-          <Col size="md-4">
-            <Card heading="Search">
-              <SearchForm
-                value={this.state.search}
-                handleInputChange={this.handleInputChange}
-                handleFormSubmit={this.handleFormSubmit}
-              />
-            </Card>
-          </Col>
-        </Row>
-      </Container>
+     return (
+    //   <Container>
+    //     <Row>
+    //       <Col size="md-8">
+    //         <Card
+    //           heading={this.state.result.Title || "Search for a Movie to Begin"}
+    //         >
+    //           {this.state.result.Title ? (
+    //             <MovieDetail
+    //               title={this.state.result.Title}
+    //               src={this.state.result.Poster}
+    //               director={this.state.result.Director}
+    //               genre={this.state.result.Genre}
+    //               released={this.state.result.Released}
+    //             />
+    //           ) : (
+    //             <h3>No Results to Display</h3>
+    //           )}
+    //         </Card>
+    //       </Col>
+    //       <Col size="md-4">
+    //         <Card heading="Search">
+    //           <SearchForm
+    //             value={this.state.search}
+    //             handleInputChange={this.handleInputChange}
+    //             handleFormSubmit={this.handleFormSubmit}
+    //           />
+    //         </Card>
+    //       </Col>
+    //     </Row>
+    //   </Container>
     );
   }
 }
