@@ -22,23 +22,59 @@ class EmployeeContainer extends Component {
   //     .catch(err => console.log(err));
   // };
 
-  // handleInputChange = event => {
-  //   const value = event.target.value;
-  //   const name = event.target.name;
-  //   this.setState({
-  //     [name]: value
-  //   });
-  // };
 
-  // // When the form is submitted, search the OMDB API for the value of `this.state.search`
-  // handleFormSubmit = event => {
-  //   event.preventDefault();
-  //   this.searchMovies(this.state.search);
-  // };
+// UPDATE THE SEARCH VALUE IN STATE TO FILTER BY EMPLOYEE NAME
+  handleInputChange = event => {
+    const value = event.target.value;
+    this.setState({ search: value });
+    this.filterEmployees(value.toLowerCase().trim());
+  };
+  
+    // When the form is submitted, search the  API for the value of `this.state.search`
+  handleFormSubmit = event => {
+    event.preventDefault();
+  };
+
+
+  // A FX THAT RETURNS A NEW ARRAY WITH FILTER METHOD AND UPDATES STATE
+  filterEmployees =(data) => {
+    if (data) {
+      this.setState({
+        filteredEmployees: this.state.employees.filter((employee) => {
+          return (
+            employee.name.first
+            .toLowerCase()
+            .concat(" ", employee.name.last.toLowerCase())
+            .includes(data) ||
+            employee.phone.includes(data) ||
+            employee.phone.replace(/[^\w\s]/gi, "").includes(data) ||
+            employee.email.includes(data) ||
+            this.formatDate(employee.dob.date).includes(data)
+              );
+            }),
+          });
+        } else{ 
+        this.setState({filteredEmployees: this.state.employees});
+      }
+    };
+  
+formatDate = (date) => {
+  date = new Date(date);
+  let dob =[];
+  dob.push(('0'+ (date.getMonth() + 1)).slice(-2));
+  dob.push(('0'+ date.getDate()).slice(-2));
+  dob.push(date.getFullYear)
+}
+
 
   render() {
      return (
        <>
+       <SearchForm
+       value={this.state.search}
+       handleInputChange ={this.handleInputChange}
+       handleFormSubmit ={this.handleFormSubmit}
+       />
        <div className = 'container mt'>
          <EmployeeTable
          state={this.state}
