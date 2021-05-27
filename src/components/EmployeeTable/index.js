@@ -23,8 +23,36 @@ const EmployeeTable = (props) => {
           <th scope ="col"><span onClick ={() => props.sortBy("dob","date")}>DOB</span></th>
         </tr>
       </thead>
+
+
       {/* body of table */}
-      <tbody>functions filter and make new array of search</tbody>
+      <tbody>
+        {/* CREATE A NEW ARRAY OF FIRST AND LAST NAMES */}
+        {props.state.filteredEmployees.map((employee) => {
+          const {first, last} = employee.name;
+          const firstAndLastName = `${first} ${last}`;
+
+          // FORMAT THE DATE
+          const dob= props.formatDate(employee.dob.date)
+
+          return (
+            <tr key ={employee.login.uuid}>
+              <td>
+                <img src = {employee.picture.thumbnail} alt={firstAndLastName}/>
+              </td>
+              <td className ="align-middle">{firstAndLastName}</td>
+              <td className ="align-middle">
+                <a href={`tel:+1${employee.phone}`}>{employee.phone}</a>
+              </td>
+              <td className = "align-middle email">
+                <a href={`mailto:${employee.email}`}>{employee.email}</a>
+              </td>
+
+
+            </tr>  
+          );
+        })}
+      </tbody>
     </table>
   );
 };

@@ -4,8 +4,8 @@ import React from "react";
 const SearchForm = (props) => {
 
     return(
-        <nav className="navbar navbar-dark bg-dark">
-            <form className = "form-inline m-3" onSubmit={props.handleFormSubmit}>
+        <nav className="navbar navbar-danger bg-danger justify-content-center">
+            <form className = "form-inline m-6" onSubmit={props.handleFormSubmit}>
                 <input
                 className ="form-control"
                 value ={props.value}
