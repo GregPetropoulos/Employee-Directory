@@ -68,11 +68,11 @@ class EmployeeContainer extends Component {
 
       if(primary){
         if(secondary && a[primary] === b[primary]) {
-          return a[secondary].localCompare(b[secondary]);
+          return a[secondary].localeCompare(b[secondary]);
         }
-        return a[primary].localCompare(b[primary]);
+        return a[primary].localeCompare(b[primary]);
       } else {
-        return a.localCompare(b);
+        return a.localeCompare(b);
       }
     });
   
