@@ -25,15 +25,18 @@ class EmployeeContainer extends Component {
   // When this component mounts, call the api 'https://randomuser.me/api/?results=150'
   componentDidMount() {
     API.searchEmployees ()
-        .then((res) => this.setState({ employees: res.data.results, filteredEmployees: res.data.results })
+        .then((res) => this.setState({ 
+          employees: res.data.results,
+          filteredEmployees: res.data.results 
+        })
         )
-        .catch(err => console.log(err));
-  }
-};
+        .catch((err) => console.log(err));
+      }
+
 
 
 // UPDATE THE SEARCH VALUE IN STATE TO FILTER BY EMPLOYEE NAME
-  handleInputChange = event => {
+  handleInputChange = (event) => {
     const value = event.target.value;
     this.setState({ search: value });
     this.filterEmployees(value.toLowerCase().trim());
@@ -56,7 +59,7 @@ class EmployeeContainer extends Component {
         },
       });
   } else {
-    sortedStaff =this.state.filteredEmployees.sort((a,b) =>{
+    sortedStaff =this.state.filteredEmployees.sort((a,b) => {
       a = a[key];
       b = b[key];
 
@@ -127,7 +130,8 @@ formatDate = (date) => {
          <EmployeeTable
          state={this.state}
          sortBy={this.sortBy}
-         filteredEmployees={this.filteredEmployees}
+         filteredEmployees={this.filterEmployees}
+         formatDate={this.formatDate}
         />
          </div>
        </>

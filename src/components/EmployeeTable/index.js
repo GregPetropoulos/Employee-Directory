@@ -32,7 +32,7 @@ const EmployeeTable = (props) => {
           const {first, last} = employee.name;
           const firstAndLastName = `${first} ${last}`;
 
-          // FORMAT THE DATE
+          // FORMAT THE DOB DATE
           const dob= props.formatDate(employee.dob.date)
 
           return (
@@ -47,9 +47,8 @@ const EmployeeTable = (props) => {
               <td className = "align-middle email">
                 <a href={`mailto:${employee.email}`}>{employee.email}</a>
               </td>
-
-
-            </tr>  
+              <td className ='align-middle'>{dob}</td>
+              </tr>  
           );
         })}
       </tbody>
