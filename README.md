@@ -5,7 +5,7 @@
 ![GitHub License Badge](https://shields.io/badge/license-MIT-green)
 
 ## Links
-### [**Deployed Link**]()
+### [**Deployed Link**](https://gregpetropoulos.github.io/Employee-Directory/)
 ### [**GitHub Link**](https://github.com/GregPetropoulos/Employee-Directory)
 ### [**Video link**](https://youtu.be/-oQdsNC-i3U)
 

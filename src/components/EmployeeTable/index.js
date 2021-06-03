@@ -15,7 +15,7 @@ const EmployeeTable = (props) => {
               Name
             </span>
           </th>
-
+{/* LISTENERS FOR SORTING COLUMNS AFTER CLICKED */}
           <th scope="col"><span onClick={() => props.sortBy("phone")}>Phone</span></th>
 
           <th scope = "col"><span onClick ={() => props.sortBy("email")}>Email</span></th>
